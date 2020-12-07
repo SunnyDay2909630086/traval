@@ -23,11 +23,13 @@ export default {
 <style lang="less" scoped>
  @import '~styles/variable.less';
   .header{
+    // width: 100%;
     height: 1.1467rem;
     line-height: 1.1467rem;
     background-color: @bgColor;
     color: #fff;
     display: flex;
+    justify-content: space-around;
     align-items: center;
     .header-left{
       float: left;
@@ -36,6 +38,7 @@ export default {
       font-size: 0.8533rem;
     }
     .header-center{
+      width: 80%;
       flex: 1;
       display: flex;
       border-radius: 0.0667rem;
@@ -56,6 +59,7 @@ export default {
       }
     }
     .header-right{
+      width: 17%;
       float: right;
       text-align: center;
       padding: 0 0.2667rem;
