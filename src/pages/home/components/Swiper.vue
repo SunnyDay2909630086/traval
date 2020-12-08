@@ -14,18 +14,13 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import SwiperCore, { Pagination } from "swiper";
-import "swiper/swiper-bundle.css";
-import "swiper/components/pagination/pagination.less";
-SwiperCore.use([Pagination]);
+import SwiperCore, { Pagination } from 'swiper'
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/pagination/pagination.less'
+SwiperCore.use([Pagination])
 export default {
-  name: "HomeSwiper",
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  data() {
+  name: 'HomeSwiper',
+  data () {
     return {
       swiperOptions: {
         pagination: {
@@ -57,8 +52,18 @@ export default {
     };
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
+      swiper () {
+        return this.$refs.mySwiper.$swiper
+      }
+    },
+  mounted () {
+    //   console.log(this.swiper.autoplay)
+      this.swiper.slideTo(3, 1000, false)
+        if (this.swiperOptions.autoplay.running) {
+            alert('是')
+        } else {
+            console.log('轮播图不能自动播放')
+        }
     }
   },
   mounted() {
