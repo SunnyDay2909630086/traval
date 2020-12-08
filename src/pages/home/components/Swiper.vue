@@ -65,16 +65,7 @@ export default {
             console.log('轮播图不能自动播放')
         }
     }
-  },
-  mounted() {
-    // this.swiper.slideTo(3, 1000, false) // 切换到第一个slide，速度为1秒
-    if (this.swiperOptions.autoplay.running) {
-      console.log("是")
-    } else {
-      console.log("不是")
-    }
   }
-};
 </script>
 
 <style lang="less" scoped>
