@@ -10,17 +10,12 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/pagination/pagination.less'
 SwiperCore.use([Pagination])
 export default {
   name: 'HomeSwiper',
-  components: {
-    Swiper,
-    SwiperSlide
-  },
   data () {
     return {
       swiperOptions: {
@@ -60,7 +55,7 @@ export default {
         if (this.swiperOptions.autoplay.running) {
             alert('是')
         } else {
-            console.log('不是')
+            console.log('轮播图不能自动播放')
         }
     }
 }
