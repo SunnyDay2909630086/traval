@@ -4,7 +4,7 @@
             <swiper-slide v-for="(pageVolume, index) of pages" :key="index">
                 <div class="aicon" v-for="item in pageVolume" :key="item.id">
                     <div class="aicon-img">
-                        <img :src="item.imgUrl" alt="" class="aicon-img-content">
+                        <img :src="item.imgUrl" alt="">
                     </div>
                     <p class="aicon-desc">{{item.desc}}</p>
                 </div>
@@ -85,43 +85,34 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     @import '~styles/variable.less';
     @import '~styles/mixin.less';
     .icon-wrapper>.swiper-container{
-        height: 0;
-        padding-bottom: 50%;
-        margin-top: 0.2667rem;
+        margin-top: 0.5rem;
         .aicon{
-            position: relative;
             width: 25%;
-            height: 0;
-            padding-bottom: 25%;
+            height: 6rem;
             overflow: hidden;
             float: left;
             .aicon-img{
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0.2667rem;
                 box-sizing: border-box;
-                padding: 0.1333rem;
-                .aicon-img-content{
+                padding: 0.25rem;
+                img{
+                    width: 100%;
                     height: 100%;
                     display: block;
                     margin: 0 auto;
                 }
             }
             .aicon-desc{
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
                 text-align: center;
-                padding: 0.0533rem 0;
+                // font-size: 0.7rem;
+                padding: 0.25rem;
+                vertical-align: middle;
                 color: @textColor;
-                .ellipsis()
+                white-space: nowrap;
+                .ellipsis()  //混入写法
             }
         }
     }

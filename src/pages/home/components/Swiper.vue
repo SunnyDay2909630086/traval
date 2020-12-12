@@ -60,7 +60,7 @@ export default {
     //   console.log(this.swiper.autoplay)
       this.swiper.slideTo(3, 1000, false)
         if (this.swiperOptions.autoplay.running) {
-            alert('是')
+            alert('能自动轮播')
         } else {
             console.log('轮播图不能自动播放')
         }

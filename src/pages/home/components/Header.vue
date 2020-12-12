@@ -23,46 +23,44 @@ export default {
 <style lang="less" scoped>
  @import '~styles/variable.less';
   .header{
-    height: 1.1467rem;
-    line-height: 1.1467rem;
+    width: 100%;
+    height: 1.8347rem;
     background-color: @bgColor;
     color: #fff;
     display: flex;
     align-items: center;
     .header-left{
-      float: left;
-      width: 1.3333rem;
+      flex: 1;
       text-align: center;
-      font-size: 0.8533rem;
+      font-size: 1.5rem;
     }
     .header-center{
-      flex: 1;
+      flex: 5;
       display: flex;
-      border-radius: 0.0667rem;
-      height: 0.8533rem;
+      border-radius: 0.15rem;
+      height: 1.4rem;
       background-color: #fff;
-      line-height: 0.8533rem;
-      padding-left: 0.1333rem;
-      font-size: 0.4267rem;
+      line-height: 1.4rem;
+      padding-left: 0.15rem;
+      font-size: 1rem;
       color: #ccc;
       input{
         width: 100%;
-        border-radius: 0.0667rem;
-        padding-left: 0.1333rem;
+        border-radius: 0 0.15rem 0.15rem 0;
+        padding-left: 0.15rem;
         &::-webkit-input-placeholder{
           color: #ccc;
-          font-size: 0.4267rem;
+          font-size: 0.8rem;
         }
       }
     }
     .header-right{
-      float: right;
+      flex: 0 0 3rem;
       text-align: center;
-      padding: 0 0.2667rem;
-      font-size: 0.4324rem;
-      margin-right: 0.1333rem;
+      padding: 0 0.5rem;
+      font-size: 0.8rem;
       span{
-        margin-left: -0.0533rem;
+        margin-left: -0.1rem;
       }
     }
   }
