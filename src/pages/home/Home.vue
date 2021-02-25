@@ -14,6 +14,7 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
+import axios from 'axios'
 export default {
   name: 'Home',
   components: {
@@ -25,8 +26,9 @@ export default {
   },
   mounted(){
     // console.log(window.screen.width,'width');
-        window.addEventListener('load', this.getRootFontSize())
+    window.addEventListener('load', this.getRootFontSize())
     window.addEventListener('resize', this.getRootFontSize())
+    this.getHomeData()
   },
     methods: {
     getRootFontSize(){
@@ -34,6 +36,11 @@ export default {
       let screenWidth = document.documentElement.clientWidth
       let rootFontSize = 20*(screenWidth/320) > 40 ? 40+'px' : (20*(screenWidth/320)+'px')
       document.documentElement.style.fontSize = rootFontSize
+    },
+    getHomeData(){
+      axios.get('/api/index.json')
+      .then( res => console.log(res,'res'))
+      .catch( err => console.log(err))
     }
   }
 }
