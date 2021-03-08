@@ -1,10 +1,10 @@
 <template>
   <div id="home">
     <home-header></home-header>
-    <home-swiper></home-swiper>
-    <home-icons></home-icons>
-    <home-recommend></home-recommend>
-    <home-weekend></home-weekend>
+    <home-swiper :list="swiperList"></home-swiper>
+    <home-icons :list="iconList"></home-icons>
+    <home-recommend :list="recommendList"></home-recommend>
+    <home-weekend :list="weekendList"></home-weekend>
   </div>
 </template>
 
@@ -24,6 +24,14 @@ export default {
     HomeRecommend,
     HomeWeekend
   },
+  data(){
+    return {
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+    }
+  },
   mounted(){
     // console.log(window.screen.width,'width');
     window.addEventListener('load', this.getRootFontSize())
@@ -31,17 +39,27 @@ export default {
     this.getHomeData()
   },
     methods: {
-    getRootFontSize(){
-      console.log('fontSize');
-      let screenWidth = document.documentElement.clientWidth
-      let rootFontSize = 20*(screenWidth/320) > 40 ? 40+'px' : (20*(screenWidth/320)+'px')
-      document.documentElement.style.fontSize = rootFontSize
-    },
-    getHomeData(){
-      axios.get('/api/index.json')
-      .then( res => console.log(res,'res'))
-      .catch( err => console.log(err))
-    }
+      getRootFontSize(){
+        console.log('fontSize');
+        let screenWidth = document.documentElement.clientWidth
+        let rootFontSize = 20*(screenWidth/320) > 40 ? 40+'px' : (20*(screenWidth/320)+'px')
+        document.documentElement.style.fontSize = rootFontSize
+      },
+      getHomeData(){
+        axios.get('/api/index')
+        .then( res => {
+          console.log(res,'res');
+          if(res.data.data.ret && res.data.data.data){
+            const data = res.data.data.data;
+            console.log(data,'data');
+            this.swiperList = data.swiperList;
+            this.iconList = data.iconList;
+            this.recommendList = data.recommendList;
+            this.weekendList = data.weekendList;
+          }
+        })
+        .catch( err => console.log(err, 'err'))
+      }
   }
 }
 </script>
