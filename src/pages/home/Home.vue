@@ -33,18 +33,9 @@ export default {
     }
   },
   mounted(){
-    // console.log(window.screen.width,'width');
-    window.addEventListener('load', this.getRootFontSize())
-    window.addEventListener('resize', this.getRootFontSize())
     this.getHomeData()
   },
     methods: {
-      getRootFontSize(){
-        console.log('fontSize');
-        let screenWidth = document.documentElement.clientWidth
-        let rootFontSize = 20*(screenWidth/320) > 40 ? 40+'px' : (20*(screenWidth/320)+'px')
-        document.documentElement.style.fontSize = rootFontSize
-      },
       getHomeData(){
         axios.get('/api/index')
         .then( res => {

@@ -7,10 +7,12 @@
       <span class="iconfont">&#xe60a;</span>
       <input type="text" placeholder="请输入城市">
     </div>
-    <div class="header-right">
-      城市
-      <span class="iconfont">&#xe6aa;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        城市
+        <span class="iconfont">&#xe6aa;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -59,6 +61,7 @@ export default {
       text-align: center;
       padding: 0 0.5rem;
       font-size: 0.8rem;
+      color: #fff;
       span{
         margin-left: -0.1rem;
       }
