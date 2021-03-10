@@ -39,10 +39,10 @@ export default {
       getHomeData(){
         axios.get('/api/index')
         .then( res => {
-          console.log(res,'res');
+          // console.log(res,'res');
           if(res.data.data.ret && res.data.data.data){
             const data = res.data.data.data;
-            console.log(data,'data');
+            // console.log(data,'data');
             this.swiperList = data.swiperList;
             this.iconList = data.iconList;
             this.recommendList = data.recommendList;

@@ -1,69 +1,51 @@
 <template>
-    <div class="list">
-        <div class="area">
-            <div class="title border-topbottom">当前城市</div>
-            <ul class="button-list">
-                <li class="button-box">
-                    <div class="aButton">北京</div>
-                </li>
-            </ul>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">热门城市</div>
-            <ul class="button-list">
-                <li class="button-box">
-                    <div class="aButton">北京</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">上海</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">广州</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">深圳</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">重庆</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">成都</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">武汉</div>
-                </li>
-                <li class="button-box">
-                    <div class="aButton">杭州</div>
-                </li>
-            </ul>
-        </div>
-        <div class="area">
-            <div class="title border-topbottom">A</div>
-            <ul class="item-list">
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-                <li class="item-box border-bottom">阿尔法</li>
-            </ul>
+    <div class="list" ref="wrapper">
+        <div>
+            <div class="area">
+                <div class="title border-topbottom">当前城市</div>
+                <ul class="button-list">
+                    <li class="button-box">
+                        <div class="aButton">北京</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="area">
+                <div class="title border-topbottom">热门城市</div>
+                <ul class="button-list" >
+                    <li class="button-box" v-for="item of hot" :key="item.id">
+                        <div class="aButton">{{item.name}}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="area" v-for="(item, key) of cities" :key="key">
+                <div class="title border-topbottom">{{key}}</div>
+                <ul class="item-list">
+                    <li class="item-box border-bottom" v-for="innerItem of item" :key="innerItem.id">
+                        {{innerItem.name}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import BScroll from '@better-scroll/core'
 export default {
-    name: 'CityList'
+    name: 'CityList',
+    props: {
+        cities: Object,
+        hot: Array
+    },
+    mounted(){
+        // console.log(BetterScroll,'scroll');
+        // this.scroll = new BScroll(this.$refs.wrapper)
+        this.scroll = new BScroll(this.$refs.wrapper)
+        // let bs = new BetterScroll('.list', {
+        //     movable: true,
+        //     // zoom: true
+        // })
+    }
 }
 </script>
 
