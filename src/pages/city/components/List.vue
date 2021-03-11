@@ -31,6 +31,8 @@
 
 <script>
 import BScroll from '@better-scroll/core'
+import Pullup from '@better-scroll/pull-up'
+
 export default {
     name: 'CityList',
     props: {
@@ -38,13 +40,16 @@ export default {
         hot: Array
     },
     mounted(){
-        // console.log(BetterScroll,'scroll');
-        // this.scroll = new BScroll(this.$refs.wrapper)
-        this.scroll = new BScroll(this.$refs.wrapper)
-        // let bs = new BetterScroll('.list', {
-        //     movable: true,
-        //     // zoom: true
-        // })
+        BScroll.use(Pullup)
+        let bs = new BScroll('.list', {
+            probeType: 3,
+            pullUpLoad: true
+        })
+         
+    },
+    created(){
+    },
+    methods:{
     }
 }
 </script>
