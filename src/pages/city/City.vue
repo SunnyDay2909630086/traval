@@ -2,8 +2,8 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list :cities="cities" :hot="hotCities"></city-list>
-        <city-alphabet :cities="cities"></city-alphabet>
+        <city-list :cities="cities" :hot="hotCities" :letter="letter" :current.sync="currentLetter"></city-list>
+        <city-alphabet :cities="cities" :currentLetter="currentLetter" :newLetter.sync="letter"></city-alphabet>
     </div>
 </template>
 
@@ -24,7 +24,9 @@ export default {
     data(){
         return{
             cities:{},
-            hotCities: []
+            hotCities: [],
+            letter: '',
+            currentLetter: ''
         }
     },
     mounted(){
@@ -34,7 +36,7 @@ export default {
         getCityInfo(){
             axios.get('../../static/mock/city.json').then(res => {
                 res = res.data
-                console.log(res, 'res')
+                // console.log(res, 'res')
                 if(res.ret && res.data){
                     const data = res.data
                     this.cities = data.cities

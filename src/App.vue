@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     getRootFontSize(){
-      console.log('fontSize');
       let screenWidth = document.documentElement.clientWidth
       let rootFontSize = 20*(screenWidth/320) > 40 ? 40+'px' : (20*(screenWidth/320)+'px')
       document.documentElement.style.fontSize = rootFontSize
