@@ -44,10 +44,13 @@ export default {
   data(){
     return{
       touchStatus: false,
-      navigatorItem: ''
+      navigatorItem: '',
+      startY: 0,
+      timer: null
     }
   },
-  mounted(){
+  updated(){
+    this.startY = this.$refs['A'][0].offsetTop    //首字母距离组件顶部的位置
   },
   methods: {
     clickLetter(e) {
@@ -62,16 +65,20 @@ export default {
     },
     handleTouchMove(e){
       if(this.touchStatus){
-        // console.log(e, 'eee');       //首字母距离组件顶部的位置
-        const startY = this.$refs['A'][0].offsetTop
-        // console.log(startY, 'Y');        //触摸字母距离组件顶部的位置
-        const touchY = e.touches[0].clientY - 78
-        // console.log(touchY);             //两者相减除以字母高度即可获得字母下标index
-        const index = Math.floor((touchY - startY)/23) - 1
-        // console.log(index,'index');
-        if( index >= 0 && index < this.letters.length){
-          this.$emit('update:newLetter', this.letters[index])
+        if(this.timer){
+          clearTimeout(this.timer)
         }
+        // 设置时间截流，过了16毫秒才执行高频触摸事件，优化性能
+        this.timer = setTimeout(()=>{
+          //触摸字母距离组件顶部的位置
+          const touchY = e.touches[0].clientY - 78
+          //两者相减除以字母高度即可获得字母下标index
+          const index = Math.floor((touchY - this.startY)/23) - 1
+          // console.log(index,'index');
+          if( index >= 0 && index < this.letters.length){
+            this.$emit('update:newLetter', this.letters[index])
+          }
+        }, 20)
       }
     },
     handletouchEnd(){
