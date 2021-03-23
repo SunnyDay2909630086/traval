@@ -55,8 +55,7 @@ export default {
   mounted() {
   },
   updated() {
-    this.$nextTick(() => {
-      if (!this.scroll) {
+        //数据滚动效果
         this.scroll = new BScroll(".wrapper", {
           probeType: 3
         })
@@ -64,8 +63,6 @@ export default {
         this.scroll.on('scroll', (position) => {
             this.scrollToTop(position)
         })
-      }
-    });
   },
   watch: {
     letter() {
@@ -92,7 +89,7 @@ export default {
             if (scrollTop >= offsetTop && scrollTop <= offsetTop + scrollHeight) {
                 //导航栏背景色选中
                 this.$emit('update:current', key)
-                console.log(key, 'key');
+                // console.log(key, 'key');
             }
         }
     }
