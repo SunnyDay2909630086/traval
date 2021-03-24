@@ -1,18 +1,18 @@
 <template>
-  <div class="wrapper" ref="wrapper">
+  <div class="wrapper">
     <div>
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <ul class="button-list">
           <li class="button-box">
-            <div class="aButton">北京</div>
+            <div class="aButton">{{this.city}}</div>
           </li>
         </ul>
       </div>
       <div class="area hot" ref="hot">
         <div class="title border-topbottom">热门城市</div>
         <ul class="button-list">
-          <li class="button-box" v-for="item of hot" :key="item.id">
+          <li class="button-box" v-for="item of hot" :key="item.id" @click="handleChangeCity(item.name)">
             <div class="aButton">{{ item.name }}</div>
           </li>
         </ul>
@@ -29,6 +29,7 @@
             class="item-box border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="handleChangeCity(innerItem.name)"
           >
             {{ innerItem.name }}
           </li>
@@ -39,7 +40,8 @@
 </template>
 
 <script>
-import BScroll from "@better-scroll/core";
+import BScroll from "@better-scroll/core"
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: "CityList",
@@ -47,12 +49,6 @@ export default {
     cities: Object,
     hot: Array,
     letter: String
-  },
-  data(){
-      return {
-      }
-  },
-  mounted() {
   },
   updated() {
         //数据滚动效果
@@ -73,6 +69,9 @@ export default {
       }
     }
   },
+  computed:{
+    ...mapState(['city'])
+  },
   methods: {
     scrollToTop(pos) {
         //dom滚动位置
@@ -92,12 +91,17 @@ export default {
                 // console.log(key, 'key');
             }
         }
-    }
+    },
+    handleChangeCity(city){
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   }
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .wrapper {
   overflow: hidden;
   position: absolute;

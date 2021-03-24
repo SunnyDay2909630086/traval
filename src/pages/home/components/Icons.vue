@@ -100,7 +100,7 @@ export default {
             float: left;
             .aicon-img{
                 box-sizing: border-box;
-                padding: 0.25rem;
+                padding: 0.6rem;
                 img{
                     width: 100%;
                     height: 100%;
